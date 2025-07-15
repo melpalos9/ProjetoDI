@@ -1,5 +1,8 @@
 from django.db import models
 
+# Create your models here.
+
+
 class Cidade(models.Model):
     nome = models.CharField(max_length=100, verbose_name="Nome da cidade")
     uf = models.CharField(max_length=2, verbose_name="UF")
@@ -22,7 +25,6 @@ class Autor(models.Model):
     class Meta:
         verbose_name = "Autor"
         verbose_name_plural = "Autores"
-
 
 class Editora(models.Model):
     nome = models.CharField(max_length=100, verbose_name="Nome da editora")
@@ -49,6 +51,17 @@ class Leitor(models.Model):
         verbose_name = "Leitor"
         verbose_name_plural = "Leitores"
 
+
+class Genero(models.Model):
+    nome = models.CharField(max_length=100, verbose_name="Gênero")
+
+    def __str__(self):
+        return self.nome
+
+    class Meta:
+        verbose_name = "Gênero"
+        verbose_name_plural = "Gêneros"
+from django.db import models
 
 class Genero(models.Model):
     nome = models.CharField(max_length=100, verbose_name="Gênero")
