@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-5">
+  <h2 class="text-center mb-4">💬 Relatos da Comunidade</h2>
+  <div class="row">
+    {% for r in relatos %}
+      <div class="col-md-6 mb-4">
+        <div class="flashcard">
+          <h5>{{ r.titulo|default:"Relato Anônimo" }}</h5>
+          <p>{{ r.relato|truncatewords:30 }}</p>
+          <small class="text-muted">
+            Postado em {{ r.criado_em|date:"d/m/Y" }} 
+            {% if r.idade_aprox %} | Idade: {{ r.idade_aprox }} {% endif %}
+          </small>
+        </div>
+      </div>
+    {% empty %}
+      <p class="text-center">Nenhum relato disponível.</p>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

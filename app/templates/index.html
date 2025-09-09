@@ -1,0 +1,128 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container mt-4">
+  <!-- Hero Section -->
+  <div class="hero text-center mb-5">
+    <h1>Bem-vindo(a) à Era da Dopamina Instantânea</h1>
+    <p>Reflexão sobre o uso consciente das redes sociais em uma plataforma educativa.</p>
+    <a href="/conteudos/" class="btn btn-gradient btn-lg mt-3">Explorar Conteúdos</a>
+  </div>
+
+  <!-- Explorar Conteúdos Section -->
+  <h2 class="text-center mb-4">Explorar Conteúdos</h2>
+  
+  <div class="row text-center">
+    <!-- Últimos Conteúdos -->
+    <div class="col-md-4 mb-4">
+      <a href="/conteudos/" class="flashcard-link">
+        <div class="flashcard">
+          <div class="flashcard-icon">📚</div>
+          <h4>Últimos Conteúdos</h4>
+          <p>Explore artigos e reflexões recentes.</p>
+        </div>
+      </a>
+    </div>
+    
+    <!-- Desafios em Destaque -->
+    <div class="col-md-4 mb-4">
+      <a href="/desafios/" class="flashcard-link">
+        <div class="flashcard">
+          <div class="flashcard-icon">🏆</div>
+          <h4>Desafios em Destaque</h4>
+          <p>Participe e supere limites.</p>
+        </div>
+      </a>
+    </div>
+    
+    <!-- Relatos da Comunidade -->
+    <div class="col-md-4 mb-4">
+      <a href="/relatos/" class="flashcard-link">
+        <div class="flashcard">
+          <div class="flashcard-icon">💬</div>
+          <h4>Relatos da Comunidade</h4>
+          <p>Compartilhe sua experiência.</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<style>
+  body {
+    background: #f8f3fc;
+  }
+
+  /* Hero Section */
+  .hero {
+    background: linear-gradient(135deg, #9b59b6, #af7ac5);
+    color: white;
+    border-radius: 25px;
+    padding: 60px 30px;
+    box-shadow: 0 8px 18px rgba(0,0,0,0.2);
+  }
+
+  /* Gradient Button */
+  .btn-gradient {
+    border-radius: 30px;
+    padding: 10px 25px;
+    font-weight: 500;
+    background: linear-gradient(135deg, #9b59b6, #d7bde2);
+    border: none;
+    color: white;
+    transition: all 0.3s ease;
+  }
+
+  .btn-gradient:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  }
+
+  /* Section Title */
+  h2 {
+    color: #6c3483;
+    font-weight: bold;
+  }
+
+  /* Flashcards Floating */
+  .flashcard-link {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .flashcard {
+    background: #fff;
+    border-radius: 20px;
+    padding: 30px 20px;
+    box-shadow: 0 12px 30px rgba(155, 89, 182, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .flashcard:hover {
+    transform: translateY(-12px) scale(1.03);
+    box-shadow: 0 18px 35px rgba(142, 68, 173, 0.4);
+  }
+
+  .flashcard-icon {
+    background: linear-gradient(135deg, #9b59b6, #af7ac5);
+    border-radius: 50%;
+    padding: 15px;
+    color: white;
+    font-size: 2rem;
+    display: inline-block;
+    margin-bottom: 15px;
+  }
+
+  .flashcard h4 {
+    color: #5b2c6f;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  .flashcard p {
+    color: #333;
+    font-size: 0.95rem;
+  }
+</style>
+
+{% endblock %}

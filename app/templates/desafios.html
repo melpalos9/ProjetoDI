@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-5">
+  <h2 class="text-center mb-4">🏆 Desafios Ativos</h2>
+  <div class="row">
+    {% for d in desafios %}
+      <div class="col-md-6 mb-4">
+        <div class="flashcard">
+          <h4>{{ d.titulo }}</h4>
+          <p>{{ d.descricao|truncatewords:30 }}</p>
+          <p><strong>Duração:</strong> {{ d.duracao_dias }} dias</p>
+          {% if d.recompensa %}
+            <span class="badge badge-success">{{ d.recompensa }}</span>
+          {% endif %}
+        </div>
+      </div>
+    {% empty %}
+      <p class="text-center">Nenhum desafio disponível.</p>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

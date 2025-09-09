@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+  <h2 class="text-center mb-4">📚 Conteúdos Publicados</h2>
+
+  <div class="row">
+    {% for c in conteudos %}
+      <div class="col-md-6 mb-4">
+        <div class="flashcard text-left">
+          <h4>{{ c.titulo }}</h4>
+          <p>{{ c.resumo|default:"Sem resumo disponível." }}</p>
+          
+          {% if c.corpo %}
+            <details>
+              <summary class="btn btn-light btn-sm mt-2">Ler mais</summary>
+              <p class="mt-3">{{ c.corpo|linebreaks }}</p>
+            </details>
+          {% endif %}
+
+          <!-- Caso o conteúdo tenha um link de vídeo -->
+          {% if c.video_url %}
+            <div class="mt-3 embed-responsive embed-responsive-16by9">
+              <iframe class="embed-responsive-item" src="{{ c.video_url }}" allowfullscreen></iframe>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    {% empty %}
+      <div class="col-12">
+        <p class="text-center">Nenhum conteúdo disponível.</p>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

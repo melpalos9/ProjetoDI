@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-5">
+  <h2 class="text-center mb-4">⭐ Feedbacks da Comunidade</h2>
+  <div class="row">
+    {% for f in feedbacks %}
+      <div class="col-md-6 mb-4">
+        <div class="flashcard">
+          <p class="mb-2">"{{ f.comentario }}"</p>
+          <p><strong>Nota:</strong> {{ f.nota }}/5</p>
+          {% if f.usuario %}
+            <small>👤 {{ f.usuario }}</small>
+          {% else %}
+            <small>👤 Anônimo</small>
+          {% endif %}
+          <br>
+          <small class="text-muted">📅 {{ f.criado_em|date:"d/m/Y" }}</small>
+        </div>
+      </div>
+    {% empty %}
+      <p class="text-center">Nenhum feedback ainda.</p>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-5">
+  <h2 class="text-center mb-4">👤 Perfis de Usuários</h2>
+  <div class="row">
+    {% for p in perfis %}
+      <div class="col-md-4 mb-4">
+        <div class="flashcard">
+          <h5>{{ p.usuario.username }}</h5>
+          <p><strong>Pontos:</strong> {{ p.pontos }}</p>
+          <p>{{ p.bio|default:"Sem biografia." }}</p>
+        </div>
+      </div>
+    {% empty %}
+      <p class="text-center">Nenhum perfil disponível.</p>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

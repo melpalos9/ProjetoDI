@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-5">
+  <h2 class="text-center mb-4">📖 Meu Diário</h2>
+  <div class="row">
+    {% for e in entradas %}
+      <div class="col-md-4 mb-4">
+        <div class="flashcard">
+          <h5>{{ e.titulo|default:"Entrada de Diário" }}</h5>
+          <p><strong>Data:</strong> {{ e.data|date:"d/m/Y" }}</p>
+          <p><strong>Humor:</strong> {{ e.humor|default:"-" }}</p>
+          <p>{{ e.descricao|truncatewords:20 }}</p>
+          <small class="text-muted">Tempo de uso: {{ e.tempo_total_min }} min</small>
+        </div>
+      </div>
+    {% empty %}
+      <p class="text-center">Nenhuma entrada registrada.</p>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

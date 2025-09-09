@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Dopamina Instantânea{% endblock %}</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body {
+      background: linear-gradient(135deg, #f3e8ff, #e5d4f3, #f8eafc);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .navbar {
+      background: linear-gradient(90deg, #8e44ad, #9b59b6);
+    }
+    .navbar-brand, .nav-link {
+      color: #fff !important;
+      font-weight: 500;
+    }
+    .hero {
+      background: linear-gradient(135deg, #9b59b6, #be90d4);
+      color: white;
+      border-radius: 25px;
+      padding: 60px 30px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+      margin: 40px 0;
+    }
+    .hero h1 {
+      font-size: 2.8rem;
+      font-weight: bold;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      margin-top: 10px;
+    }
+    .btn-light {
+      border-radius: 30px;
+      padding: 10px 25px;
+      font-weight: 500;
+    }
+    /* Flashcards */
+    .flashcard-link {
+      text-decoration: none;
+      color: inherit;
+    }
+    .flashcard {
+      background: white;
+      border-radius: 20px;
+      padding: 30px 20px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.12);
+      transition: all 0.3s ease;
+      height: 100%;
+    }
+    .flashcard:hover {
+      transform: translateY(-8px) scale(1.03);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+      background: #f3e6ff;
+    }
+    .flashcard-icon {
+      font-size: 3rem;
+      margin-bottom: 15px;
+    }
+    .flashcard h4 {
+      color: #6c3483;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    .flashcard p {
+      color: #444;
+      font-size: 0.95rem;
+    }
+    /* Footer */
+    .footer {
+      background: #8e44ad;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: 60px;
+      border-radius: 20px 20px 0 0;
+    }
+    /* Fundo suave */
+body {
+  background: linear-gradient(160deg, #f3e8ff, #ede7f6, #f8efff);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Navbar */
+.navbar {
+  background: linear-gradient(90deg, #7d3c98, #9b59b6);
+  box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+}
+.navbar-brand, .nav-link {
+  color: #fff !important;
+  font-weight: 500;
+}
+.navbar-brand:hover, .nav-link:hover {
+  text-shadow: 0px 0px 6px rgba(255,255,255,0.7);
+}
+
+/* Hero */
+.hero {
+  background: linear-gradient(135deg, #9b59b6, #af7ac5);
+  color: white;
+  border-radius: 25px;
+  padding: 60px 30px;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.2);
+  margin: 50px 0;
+}
+.hero h1 {
+  font-size: 2.8rem;
+  font-weight: bold;
+}
+.hero p {
+  font-size: 1.2rem;
+  margin-top: 10px;
+}
+
+/* Botão */
+.btn-light {
+  border-radius: 30px;
+  padding: 10px 25px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+.btn-light:hover {
+  background: #f3e6ff;
+  transform: scale(1.05);
+}
+
+/* Flashcards */
+.flashcard-link {
+  text-decoration: none;
+  color: inherit;
+}
+.flashcard {
+  background: #fff;
+  border-radius: 20px;
+  padding: 30px 20px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.12);
+  transition: all 0.3s ease;
+  height: 100%;
+}
+.flashcard:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+  background: #f9f2ff;
+}
+.flashcard-icon {
+  font-size: 3rem;
+  margin-bottom: 15px;
+}
+.flashcard h4 {
+  color: #6c3483;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.flashcard p {
+  color: #555;
+  font-size: 0.95rem;
+}
+
+/* Footer fixo no chão */
+.footer {
+  background: #7d3c98;
+  color: white;
+  text-align: center;
+  padding: 15px;
+  margin-top: auto;  /* empurra pro fundo */
+  border-radius: 20px 20px 0 0;
+}
+/* Fundo geral */
+body {
+  background: linear-gradient(160deg, #f3e8ff, #e9d9fa, #f8efff);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Flashcards */
+.flashcard {
+  background: linear-gradient(145deg, #f6e9ff, #e9d9fa);
+  border-radius: 20px;
+  padding: 30px 20px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.12);
+  transition: all 0.3s ease;
+  height: 100%;
+}
+.flashcard:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+  background: linear-gradient(145deg, #f0dfff, #e2c9f7);
+}
+.flashcard h4 {
+  color: #5b2c6f;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.flashcard p {
+  color: #333;
+  font-size: 0.95rem;
+}
+
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg">
+    <a class="navbar-brand" href="/">Dopamina Instantânea</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarNav" aria-controls="navbarNav"
+            aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="/conteudos/">Conteúdos</a></li>
+        <li class="nav-item"><a class="nav-link" href="/diario/">Diário</a></li>
+        <li class="nav-item"><a class="nav-link" href="/desafios/">Desafios</a></li>
+        <li class="nav-item"><a class="nav-link" href="/respiracao/">Respiração</a></li>
+        <li class="nav-item"><a class="nav-link" href="/relatos/">Relatos</a></li>
+        <li class="nav-item"><a class="nav-link" href="/categorias/">Categorias</a></li>
+        <li class="nav-item"><a class="nav-link" href="/perfis/">Perfis</a></li>
+        <li class="nav-item"><a class="nav-link" href="/feedbacks/">Feedbacks</a></li>
+        <li class="nav-item"><a class="nav-link" href="/admin/">Administração</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Conteúdo dinâmico -->
+  {% block content %}{% endblock %}
+
+  <!-- Footer -->
+  <div class="footer">
+    <p>© 2025 Dopamina Instantânea — Desenvolvido em Django</p>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

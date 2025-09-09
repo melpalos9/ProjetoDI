@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-5">
+  <h2 class="text-center mb-4">🌬️ Exercícios de Respiração</h2>
+  <div class="row">
+    {% for r in respiracoes %}
+      <div class="col-md-4 mb-4">
+        <div class="flashcard">
+          <h5>{{ r.titulo }}</h5>
+          <p>{{ r.instrucoes|truncatewords:20 }}</p>
+          <small class="text-muted">Duração: {{ r.duracao_segundos }}s</small>
+          <br>
+          <button class="btn btn-custom btn-sm mt-2">Iniciar</button>
+        </div>
+      </div>
+    {% empty %}
+      <p class="text-center">Nenhum exercício disponível.</p>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}
