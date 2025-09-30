@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-5">
+  <h2 class="mb-3">{{ conteudo.titulo }}</h2>
+  <p class="text-muted">Publicado em {{ conteudo.publicado_em|date:"d/m/Y" }}</p>
+
+  <p class="lead">{{ conteudo.resumo }}</p>
+  <div class="mb-4">
+    {{ conteudo.corpo|linebreaks }}
+  </div>
+
+  {% if conteudo.video_url %}
+    <div class="ratio ratio-16x9 mb-4">
+      <iframe 
+        src="{{ conteudo.video_url|replace:'youtu.be/','www.youtube.com/embed/' }}" 
+        frameborder="0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+        allowfullscreen>
+      </iframe>
+    </div>
+  {% endif %}
+</div>
+{% endblock %}

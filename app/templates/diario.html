@@ -1,21 +1,49 @@
 {% extends "base.html" %}
+
 {% block content %}
-<div class="container mt-5">
-  <h2 class="text-center mb-4">📖 Meu Diário</h2>
-  <div class="row">
-    {% for e in entradas %}
-      <div class="col-md-4 mb-4">
-        <div class="flashcard">
-          <h5>{{ e.titulo|default:"Entrada de Diário" }}</h5>
-          <p><strong>Data:</strong> {{ e.data|date:"d/m/Y" }}</p>
-          <p><strong>Humor:</strong> {{ e.humor|default:"-" }}</p>
-          <p>{{ e.descricao|truncatewords:20 }}</p>
-          <small class="text-muted">Tempo de uso: {{ e.tempo_total_min }} min</small>
-        </div>
-      </div>
-    {% empty %}
-      <p class="text-center">Nenhuma entrada registrada.</p>
-    {% endfor %}
-  </div>
+<div class="container mt-5" style="max-width: 800px;">
+    <h2 class="text-center mb-4">📔 Meu Diário</h2>
+
+    <!-- Formulário -->
+    <div class="card shadow p-4 mb-5">
+        <h4 class="mb-3">✍️ Nova Entrada</h4>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-success w-100">Salvar</button>
+        </form>
+    </div>
+
+    <!-- Lista -->
+    {% if diarios %}
+        {% for diario in diarios %}
+            <div class="card shadow-sm mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">{{ diario.titulo }}</h5>
+                    <p class="text-muted small">Criado em {{ diario.data|date:"d/m/Y H:i" }}</p>
+                    <p class="card-text">{{ diario.conteudo|linebreaks }}</p>
+
+                    <!-- Ações -->
+                    <div class="d-flex justify-content-between">
+                        <form method="post" class="w-100 me-2">
+                            {% csrf_token %}
+                            <input type="hidden" name="editar_id" value="{{ diario.id }}">
+                            <input type="text" name="titulo" class="form-control mb-2" value="{{ diario.titulo }}">
+                            <textarea name="conteudo" class="form-control mb-2">{{ diario.conteudo }}</textarea>
+                            <button type="submit" class="btn btn-warning btn-sm w-100">Salvar Alterações</button>
+                        </form>
+
+                        <form method="post">
+                            {% csrf_token %}
+                            <input type="hidden" name="excluir_id" value="{{ diario.id }}">
+                            <button type="submit" class="btn btn-danger btn-sm">Excluir</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p class="text-center text-muted">Nenhuma entrada registrada.</p>
+    {% endif %}
 </div>
 {% endblock %}

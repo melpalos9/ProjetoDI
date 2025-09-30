@@ -85,3 +85,45 @@ class FeedbacksView(View):
     def get(self, request, *args, **kwargs):
         feedbacks = Feedback.objects.all()
         return render(request, "feedbacks.html", {"feedbacks": feedbacks})
+from django.views.generic import DetailView
+from .models import Conteudo
+
+class ConteudoDetailView(DetailView):
+    model = Conteudo
+    template_name = "conteudo_detail.html"
+    context_object_name = "conteudo"
+from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
+from .models import Diario
+from .forms import DiarioForm
+
+@login_required
+def diario_view(request):
+    diarios = Diario.objects.filter(usuario=request.user).order_by("-data")
+
+    # Criar nova entrada
+    if request.method == "POST":
+        # Se for exclusão
+        if "excluir_id" in request.POST:
+            Diario.objects.filter(id=request.POST["excluir_id"], usuario=request.user).delete()
+            return redirect("diario")
+
+        # Se for edição
+        if "editar_id" in request.POST:
+            diario = Diario.objects.get(id=request.POST["editar_id"], usuario=request.user)
+            diario.titulo = request.POST.get("titulo")
+            diario.conteudo = request.POST.get("conteudo")
+            diario.save()
+            return redirect("diario")
+
+        # Se for nova entrada
+        form = DiarioForm(request.POST)
+        if form.is_valid():
+            novo = form.save(commit=False)
+            novo.usuario = request.user
+            novo.save()
+            return redirect("diario")
+    else:
+        form = DiarioForm()
+
+    return render(request, "diario/diario.html", {"form": form, "diarios": diarios})
