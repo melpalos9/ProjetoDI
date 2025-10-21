@@ -1,23 +1,32 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ conteudo.titulo }} - Saúde Mental{% endblock %}
+
 {% block content %}
 <div class="container mt-5">
-  <h2 class="mb-3">{{ conteudo.titulo }}</h2>
-  <p class="text-muted">Publicado em {{ conteudo.publicado_em|date:"d/m/Y" }}</p>
-
-  <p class="lead">{{ conteudo.resumo }}</p>
-  <div class="mb-4">
-    {{ conteudo.corpo|linebreaks }}
-  </div>
-
-  {% if conteudo.video_url %}
-    <div class="ratio ratio-16x9 mb-4">
-      <iframe 
-        src="{{ conteudo.video_url|replace:'youtu.be/','www.youtube.com/embed/' }}" 
-        frameborder="0" 
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-        allowfullscreen>
-      </iframe>
+  <article class="card shadow">
+    <div class="card-body">
+      <h1 class="card-title">{{ conteudo.titulo }}</h1>
+      <p class="text-muted">
+        Publicado em: {{ conteudo.publicado_em|date:"d/m/Y" }} | 
+        Categoria: {{ conteudo.categoria.nome|default:"Sem categoria" }}
+      </p>
+      
+      {% if conteudo.video_url %}
+      <div class="embed-responsive embed-responsive-16by9 mb-4">
+        <iframe class="embed-responsive-item" src="{{ conteudo.video_url }}" allowfullscreen style="width: 100%; height: 400px;"></iframe>
+      </div>
+      {% endif %}
+      
+      <div class="content-body">
+        {{ conteudo.corpo|linebreaks }}
+      </div>
+      
+      <div class="mt-4">
+        <a href="{% url 'app:conteudos' %}" class="btn btn-secondary">← Voltar para Conteúdos</a>
+      </div>
     </div>
-  {% endif %}
+  </article>
 </div>
 {% endblock %}
